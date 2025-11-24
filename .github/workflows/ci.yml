@@ -37,22 +37,22 @@ jobs:
         run: |
           cd ds-account-service
           mvn clean package -DskipTests
-          docker build -t ${{ env.DOCKER_USERNAME }}/ds-account-service:latest .
-          docker push ${{ env.DOCKER_USERNAME }}/ds-account-service:latest
-
+          docker build -t $DOCKER_USERNAME/ds-account-service:latest .
+          docker push $DOCKER_USERNAME/ds-account-service:latest
+          
       - name: Build & Push ds-api-gateway
         run: |
           cd ds-api-gateway
           mvn clean package -DskipTests
-          docker build -t ${{ env.DOCKER_USERNAME }}/ds-api-gateway:latest .
-          docker push ${{ env.DOCKER_USERNAME }}/ds-api-gateway:latest
+          docker build -t $DOCKER_USERNAME/ds-api-gateway:latest .
+          docker push $DOCKER_USERNAME/ds-api-gateway:latest
 
       - name: Build & Push ds-client-service
         run: |
           cd ds-client-service
           mvn clean package -DskipTests
-          docker build -t ${{ env.DOCKER_USERNAME }}/ds-client-service:latest .
-          docker push ${{ env.DOCKER_USERNAME }}/ds-client-service:latest
+          docker build -t $DOCKER_USERNAME/ds-client-service:latest .
+          docker push $DOCKER_USERNAME/ds-client-service:latest
 
   deploy:
     needs: build
